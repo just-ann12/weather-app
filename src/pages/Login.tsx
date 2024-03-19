@@ -43,7 +43,6 @@ export const Login: FC = () => {
           const getUserDoc = async () => {
             const data = {
               username: "",
-              name: "",
             };
             const usersRef = collection(db, "users");
             const q = query(usersRef, where("UID", "==", uid));
@@ -52,7 +51,6 @@ export const Login: FC = () => {
             // This will only run once
             querySnapshot.forEach((doc) => {
               data.username = doc.data().username;
-              data.name = doc.data().name;
             });
   
             // Dispatch all data into the store
@@ -60,7 +58,6 @@ export const Login: FC = () => {
               login({
                 email: user.email || "",
                 username: data.username,
-                name: data.name,
               })
             );
             navigate("/");

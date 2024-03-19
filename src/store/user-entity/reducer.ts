@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUserOperation, logoutUserOperation } from "./operations";
+import { getUserInfoOperation, loginUserOperation, logoutUserOperation } from "./operations";
 import { IUserState } from "./interface";
 
 const initialValue: IUserState = {
@@ -12,8 +12,9 @@ export const userStore = createSlice({
   reducers: {
     login: loginUserOperation,
     logout: logoutUserOperation,
+    getUserInfo: getUserInfoOperation
   },
 });
 
-export const { login, logout } = userStore.actions;
+export const { login, logout, getUserInfo } = userStore.actions;
 export default userStore.reducer;

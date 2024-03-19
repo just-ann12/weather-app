@@ -12,7 +12,6 @@ import {
 } from "store/weather-entity/reducer";
 import {
   selectorGetCitiesWeatherList,
-  selectorGetCityWeather,
 } from "store/weather-entity/selectors";
 
 // Types
@@ -34,7 +33,7 @@ const App = () => {
   const dispatch = useThunkDispatch();
   const citiesWeatherList = useSelector(selectorGetCitiesWeatherList);
   const [searchCity, setSearchCity] = useState<WeatherData | null>(null);
-  const [error, setError] = useState<booleann>(false);
+  const [error, setError] = useState<boolean>(false);
   const [city, setCity] = useState<string>("");
 
   const handleCardClick = (data: WeatherData) => {

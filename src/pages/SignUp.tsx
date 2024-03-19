@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import {  createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import {
   TextField,
@@ -43,7 +43,6 @@ export const SignUp: FC = () => {
     initialValues: {
       email: "",
       username: "",
-      name: "",
       password: "",
       confirmPassword: "",
     },
@@ -58,7 +57,6 @@ export const SignUp: FC = () => {
               UID: userId,
               username: values.username,
               email: values.email,
-              name: values.name || "",
             });
             signOut(auth);
           };
@@ -67,7 +65,6 @@ export const SignUp: FC = () => {
             login({
               username: values.username,
               email: values.email,
-              name: values.name,
             })
           );
           navigate("/");
@@ -103,17 +100,6 @@ export const SignUp: FC = () => {
             value={formik.values.username}
             error={formik.touched.username && Boolean(formik.errors.username)}
             helperText={formik.touched.username && formik.errors.username}
-            fullWidth
-          />
-          <TextField
-            name="name"
-            label="Name"
-            variant="outlined"
-            placeholder="Name"
-            onChange={formik.handleChange}
-            value={formik.values.name}
-            error={formik.touched.name && Boolean(formik.errors.name)}
-            helperText={formik.touched.name ? formik.errors.name : "Optional"}
             fullWidth
           />
           <TextField

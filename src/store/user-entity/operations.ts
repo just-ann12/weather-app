@@ -12,3 +12,10 @@ export const loginUserOperation = (
 export const logoutUserOperation = (state: IUserState) => {
   state.user = null;
 };
+
+export const getUserInfoOperation = (
+  state: IUserState,
+  { payload }: PayloadAction<User>
+) => {
+  state.user = payload;
+};
